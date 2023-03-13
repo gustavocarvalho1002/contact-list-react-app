@@ -25,14 +25,14 @@ class ContactIndex extends React.Component {
           name: "Daniel Carvalho",
           phone: "123-546-123",
           email: "daniel@email.com",
-          isFavorite: false,
+          isFavorite: true,
         },
         {
           id: 1,
           name: "Maria das Graças Carvalho",
           phone: "123-546-123",
           email: "maria@email.com",
-          isFavorite: false,
+          isFavorite: true,
         },
       ],
     };

@@ -4,9 +4,9 @@ const Header = () => {
     //   <span className="h2 pt-4 m-2">Counter Game</span>
     // </div>
 
-    <nav class="navbar bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#">
+    <nav className="navbar bg-primary">
+      <div className="container-fluid">
+        <a className="navbar-brand text-white" href="#">
           CONTACT LIST APP
         </a>
       </div>
