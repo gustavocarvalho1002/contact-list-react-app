@@ -14,13 +14,28 @@ class AddContact extends React.Component {
     const name = e.target.elements.contactName.value.trim();
     const email = e.target.elements.contactEmail.value.trim();
     const phone = e.target.elements.contactPhone.value.trim();
-    this.props.handleAddContact({ name: name, email: email, phone: phone });
+
+    const response = this.props.handleAddContact({
+      name: name,
+      email: email,
+      phone: phone,
+    });
+
+    if (response.status == "success") {
+      this.setState({ errorMessage: undefined, sucessMessage: response.msg });
+      document.querySelector(".contact-form").reset();
+    } else {
+      this.setState({ errorMessage: response.msg, sucessMessage: undefined });
+    }
   };
 
   render() {
     return (
       <div className="border col-12 text-white p-2">
-        <form onSubmit={this.handleAddContactFormSubmit}>
+        <form
+          onSubmit={this.handleAddContactFormSubmit}
+          className="contact-form"
+        >
           <div className="row p-2">
             <div className="col-12 text-white-50">Add New Contact</div>
 
@@ -47,6 +62,22 @@ class AddContact extends React.Component {
                 name="contactPhone"
               ></input>
             </div>
+
+            {this.state.errorMessage == undefined ? (
+              <div></div>
+            ) : (
+              <div className="col-12 text-danger text-center">
+                {this.state.errorMessage}
+              </div>
+            )}
+
+            {this.state.sucessMessage == undefined ? (
+              <div></div>
+            ) : (
+              <div className="col-12 text-success text-center">
+                {this.state.sucessMessage}
+              </div>
+            )}
 
             <div className="col-12 col-md-6 offset-md-3 p-1">
               <button className="btn btn-primary btn-sm form-control">
