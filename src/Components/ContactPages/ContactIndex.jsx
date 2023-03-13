@@ -38,6 +38,20 @@ class ContactIndex extends React.Component {
     };
   }
 
+  handleAddContact = (newContact) => {
+    const newFinalContact = {
+      ...newContact,
+      id: this.state.contactList[this.state.contactList.length - 1].id + 1,
+      isFavorite: false,
+    };
+
+    this.setState((previusState) => {
+      return {
+        contactList: previusState.contactList.concat([newFinalContact]),
+      };
+    });
+  };
+
   render() {
     return (
       <div>
@@ -53,7 +67,7 @@ class ContactIndex extends React.Component {
           </div>
           <div className="row py-2">
             <div className="col-8 offset-2 row">
-              <AddContact></AddContact>
+              <AddContact handleAddContact={this.handleAddContact}></AddContact>
             </div>
           </div>
           <div className="row py-2">
